@@ -2,31 +2,42 @@
 
 A Flask-based web application that uses AI to generate aesthetic color palettes from uploaded images.
 
----
-
 ## 🌐 Live Demo
 
 🚀 [View Live App on Render]([https://<your-app-name>.onrender.com](https://ai-color-palette-generator-project.onrender.com/))
 
----
-
 ## 📂 Project Structure
 
 AI-color-palette-generator
+
 ├── api/
+
 │ ├── index.py # Main Flask app
+
 │ ├── utils.py # Palette extraction logic
+
 │ ├── requirements.txt # Python dependencies
+
 │
+
 ├── static/
+
 │ ├── css/ # Styles and background images
+
 │ ├── uploads/ # Uploaded user images (excluded from Git)
+
 │ └── palettes/ # Generated palettes (excluded from Git)
+
 │
+
 ├── templates/
+
 │ └── index.html # Main HTML template
+
 │
+
 ├── .gitignore
+
 └── README.md
 
 
