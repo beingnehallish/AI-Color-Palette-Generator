@@ -5,6 +5,7 @@ A Flask-based web application that uses AI to generate aesthetic color palettes 
 ## 🌐 Live Demo
 
 🚀 [View Live App on Render]([https://<your-app-name>.onrender.com](https://ai-color-palette-generator-project.onrender.com/))
+[https://<your-app-name>.onrender.com](https://ai-color-palette-generator-project.onrender.com/
 
 ## 📂 Project Structure
 
