@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Color Palette Generator</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <div class="container">
+    <h1>Color Palette Generator</h1>
+    <h3>✿ Generate your palette in seconds using AI ✿</h3>
+   <form id="uploadForm" method="POST" enctype="multipart/form-data">
+  <div id="dropArea" class="drop-area">
+    <p>📂 Drag & Drop an image here, or <span class="browse">browse</span></p>
+    <input type="file" name="image" id="imageInput" required accept="image/*" />
+    <label for="imageInput" id="fileLabel">No file chosen</label>
+  </div>
+
+  <button type="submit">Generate Palette</button>
+</form>
+
+
+
+    {% if palette_image %}
+      <h2>Generated Palette</h2>
+      <img src="/static/{{ palette_image }}" alt="Color Palette" class="palette-img" />
+      <br><a href="/static/{{ palette_image }}" download class="download-btn">Download Palette</a>
+    
+      <h3>Palette Colors (Hex)</h3>
+      <ul class="hex-list">
+        {% for hex in hex_colors %}
+          <li><span class="hex-swatch" style="background: {{ hex }}"></span>{{ hex }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+  </div>
+  <script>
+  const form = document.getElementById('uploadForm');
+  const loading = document.getElementById('loading');
+  const dropArea = document.getElementById('dropArea');
+  const fileInput = document.getElementById('imageInput');
+  const fileLabel = document.getElementById('fileLabel');
+
+  // Loading animation trigger
+  form.addEventListener('submit', () => {
+    loading.classList.remove('hidden');
+  });
+
+  // Click to browse
+  dropArea.addEventListener('click', () => {
+    fileInput.click();
+  });
+
+  // File label update
+  fileInput.addEventListener('change', () => {
+    if (fileInput.files.length > 0) {
+      fileLabel.textContent = fileInput.files[0].name;
+    }
+  });
+
+  // Drag-and-drop functionality
+  ['dragenter', 'dragover'].forEach(eventName => {
+    dropArea.addEventListener(eventName, (e) => {
+      e.preventDefault();
+      dropArea.classList.add('dragging');
+    }, false);
+  });
+
+  ['dragleave', 'drop'].forEach(eventName => {
+    dropArea.addEventListener(eventName, (e) => {
+      e.preventDefault();
+      dropArea.classList.remove('dragging');
+    }, false);
+  });
+
+  dropArea.addEventListener('drop', (e) => {
+    if (e.dataTransfer.files.length > 0) {
+      fileInput.files = e.dataTransfer.files;
+      fileLabel.textContent = e.dataTransfer.files[0].name;
+    }
+  });
+</script>
+
+
+<script>
+  // Set current year
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<footer>
+  <p>&copy; <span id="year"></span> Nehal's AI Color Palette Generator — Built with 💙</p>
+</footer>
+
+</body>
+</html>
