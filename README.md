@@ -1,6 +1,6 @@
 # 🎨 AI Color Palette Generator
 
-A Flask-based web application that uses AI to generate aesthetic color palettes from uploaded images.
+A Flask-based web app that generates aesthetic color palettes from uploaded images using KMeans clustering. Built with Python, HTML/CSS, and OpenCV. Features image upload, dominant color extraction, and live deployment on Render.
 
 ## 🌐 Live Demo
 
